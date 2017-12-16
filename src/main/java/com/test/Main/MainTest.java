@@ -12,7 +12,7 @@ public class MainTest {
 		
 		
 		TestTable test = new TestTable();
-		test.setId("dongmin");
+		test.setId("dongmin1");
 		test.setPassword("1234");
 		
 		dao.add(test);
