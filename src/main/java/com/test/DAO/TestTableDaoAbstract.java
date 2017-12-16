@@ -10,8 +10,7 @@ import javax.sql.DataSource;
 
 import com.test.DTO.TestTable;
 
-public class TestTableDao {
-
+public abstract class TestTableDaoAbstract {
 	private DataSource dataSource;
 	
 	public void add(TestTable testTable) throws ClassNotFoundException, SQLException{
@@ -49,16 +48,7 @@ public class TestTableDao {
 		c.close();
 		
 		return test;
-		
-		
-	}
-	
-	private Connection getConnection() throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/efws?useSSL=false"
-			,"EFWS" ,"elandFood12!@" );
-		
-		return c;
-		
-	}
+			
+	}	
+	public abstract Connection getConnection() throws ClassNotFoundException, SQLException; 
 }
