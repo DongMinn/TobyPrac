@@ -8,19 +8,21 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import com.test.DB.ConnectionMaker;
+import com.test.DB.DaumConnectionMaker;
 import com.test.DB.SimpleConnectionMaker;
 import com.test.DTO.TestTable;
 
 public class TestTableDao {
 
-	private SimpleConnectionMaker simpleConnectionMaker;
+	private ConnectionMaker connectionMaker;
 	
 	public TestTableDao(){
-		simpleConnectionMaker = new SimpleConnectionMaker();
+		connectionMaker = new DaumConnectionMaker();
 	}
 	
 	public void add(TestTable testTable) throws ClassNotFoundException, SQLException{
-		Connection c = simpleConnectionMaker.makeNewConnection();
+		Connection c = connectionMaker.makeNewConnection();
 		PreparedStatement ps = c.prepareStatement("insert into testTable values(?,?) ");
 		
 		ps.setString(1, testTable.getId());
@@ -33,7 +35,7 @@ public class TestTableDao {
 	}
 	public TestTable get(String id) throws ClassNotFoundException, SQLException{
 		
-		Connection c = simpleConnectionMaker.makeNewConnection();
+		Connection c = connectionMaker.makeNewConnection();
 		PreparedStatement ps 
 			= c.prepareStatement("select * from testTable where id = ?");
 		
