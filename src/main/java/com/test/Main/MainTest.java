@@ -3,12 +3,16 @@ package com.test.Main;
 import java.sql.SQLException;
 
 import com.test.DAO.TestTableDao;
+import com.test.DB.ConnectionMaker;
+import com.test.DB.DaumConnectionMaker;
 import com.test.DTO.TestTable;
 
 public class MainTest {
 
 	public static void main(String [] args) throws ClassNotFoundException, SQLException{
-		TestTableDao dao = new TestTableDao();
+		ConnectionMaker cm = new DaumConnectionMaker();
+		
+		TestTableDao dao = new TestTableDao(cm);
 		
 		
 		TestTable test = new TestTable();

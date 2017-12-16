@@ -17,9 +17,10 @@ public class TestTableDao {
 
 	private ConnectionMaker connectionMaker;
 	
-	public TestTableDao(){
-		connectionMaker = new DaumConnectionMaker();
+	public TestTableDao(ConnectionMaker connectionMaker){
+		this.connectionMaker = connectionMaker;
 	}
+
 	
 	public void add(TestTable testTable) throws ClassNotFoundException, SQLException{
 		Connection c = connectionMaker.makeNewConnection();
